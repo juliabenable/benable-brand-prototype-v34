@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import '../../styles/pulse.css';
 import { CREW, DAYS } from './pulseData.js';
-import { stageOf, AmineProgress2, AmineTable, AmineRail } from './amine.jsx';
+import { stageOf, AmineProgress2, AmineTable, AmineRail, StayTuned, CreatorsFound } from './amine.jsx';
 
 /*
   Campaign Pulse v34 — single experience (v33's C), kept lean for polishing:
@@ -18,6 +18,7 @@ export default function CampaignPulse() {
   const [stageFilter, setStageFilter] = useState(null);
   const rootRef = useRef(null);
   const scene = DAYS[idx];
+  const phase = scene.phase; // 'sourcing' | 'review' | undefined (live dashboard)
 
   useEffect(() => { persistedIdx = idx; }, [idx]);
   useEffect(() => { setStageFilter(null); }, [idx]);
@@ -36,13 +37,35 @@ export default function CampaignPulse() {
     const column = wrap?.classList.contains('cp-host') ? wrap.parentElement : wrap;
     if (!column) return undefined;
     const pane = column.parentElement;
-    column.classList.add('cp-crew-mode', 'cp-crew-mode--labs');
-    pane?.classList.add('cp-labs-pane');
+    column.classList.add('cp-crew-mode');
+    if (!phase) {
+      column.classList.add('cp-crew-mode--labs');
+      pane?.classList.add('cp-labs-pane');
+    }
     return () => {
       column.classList.remove('cp-crew-mode', 'cp-crew-mode--labs');
       pane?.classList.remove('cp-labs-pane');
     };
-  }, []);
+  }, [phase]);
+
+  // Recruiting pill (Figma #fff0ce/#a85321) while sourcing/reviewing; Active after.
+  useEffect(() => {
+    const pill = document.querySelector('.workflow-header-main .phase-pill');
+    const label = pill?.querySelector('span:last-child');
+    const dot = pill?.querySelector('.phase-pill-dot');
+    if (!pill || !label) return undefined;
+    if (!phase) return undefined;
+    label.textContent = 'Recruiting';
+    pill.style.background = '#fff0ce';
+    pill.style.color = '#a85321';
+    if (dot) dot.style.background = '#a85321';
+    return () => {
+      label.textContent = 'Active';
+      pill.style.background = '';
+      pill.style.color = '';
+      if (dot) dot.style.background = '';
+    };
+  }, [phase]);
 
   useEffect(() => {
     const onKey = (e) => {
@@ -57,40 +80,39 @@ export default function CampaignPulse() {
   const crewRows = (CREW[scene.day] || []).filter((c) => {
     if (stageFilter == null) return true;
     if (stageFilter === 'casting') return !!c.mystery;
-    if (stageFilter === 'needs') return !c.mystery && (!!c.action || scene.day === 3);
+    if (stageFilter === 'needs') return (c.mystery && c.found) || (!c.mystery && !!c.action);
     return !c.mystery && stageOf(c, scene.day) === stageFilter;
   });
 
   return (
     <div className="cp-root cp-root--c" ref={rootRef}>
-      <AmineProgress2 scene={scene} filter={stageFilter} onFilter={setStageFilter} />
-      <div className="cp-crew2" key={`b-${scene.day}`}>
-        <div className="cp-crew-cols cp-crew-cols--left">
-          <div className="cp-crew-left">
-            {scene.day === 1 && (
-              <div className="cp-katie-card" style={{ marginBottom: 16 }}>
-                <div className="cp-katie">K</div>
-                <div>
-                  <div className="cp-katie-note">“Welcome in! My team is out sourcing your creators right now — your first picks land in about two days.”</div>
-                  <div className="cp-katie-byline">Katie · for your Benable team</div>
-                </div>
+      {phase === 'sourcing' ? (
+        <StayTuned />
+      ) : phase === 'review' ? (
+        <CreatorsFound count={(CREW[scene.day] || []).length} />
+      ) : (
+        <>
+          <AmineProgress2 scene={scene} filter={stageFilter} onFilter={setStageFilter} />
+          <div className="cp-crew2" key={`b-${scene.day}`}>
+            <div className="cp-crew-cols cp-crew-cols--left">
+              <div className="cp-crew-left">
+                <AmineTable
+                  scene={scene}
+                  rows={crewRows}
+                  filter={stageFilter}
+                  onFilter={setStageFilter}
+                  openCrew={openCrew}
+                  toggleCrew={toggleCrew}
+                />
               </div>
-            )}
-            <AmineTable
-              scene={scene}
-              rows={crewRows}
-              filter={stageFilter}
-              onFilter={setStageFilter}
-              openCrew={openCrew}
-              toggleCrew={toggleCrew}
-            />
-          </div>
 
-          <aside className="cp-tile-stack">
-            <AmineRail scene={scene} />
-          </aside>
-        </div>
-      </div>
+              <aside className="cp-tile-stack">
+                <AmineRail scene={scene} />
+              </aside>
+            </div>
+          </div>
+        </>
+      )}
 
       {/* demo scrubber — presenter control, not product UI */}
       <nav className="cp-scrubber" aria-label="Demo controls">

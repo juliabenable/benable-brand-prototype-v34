@@ -4,7 +4,7 @@
 export const STAGE_LABELS = ['Invited', 'Confirmed', 'Product', 'Filming', 'Submitted', 'Live'];
 
 /* campaign completion per demo day */
-export const PCT = { 1: '4%', 3: '12%', 9: '34%', 16: '58%', 22: '80%', 30: '100%' };
+export const PCT = { 1: '4%', 3: '12%', 9: '34%', 11: '42%', 16: '58%', 22: '80%', 30: '100%' };
 const B = import.meta.env.BASE_URL;
 export const PHOTOS = {
   Maya: `${B}creators/maya.jpg`,
@@ -40,6 +40,14 @@ export const CREW = {
     { name: 'Jade', handle: '@jadebythesea', stage: 2, status: { type: 'facts', phrases: ['📬 Delivered yesterday'] } },
     { name: 'Priya', handle: '@priyacreates', stage: 1, status: { type: 'facts', phrases: ['💭 Sketching content ideas'] } },
     { mystery: true, name: 'Casting…', stage: 0, status: { type: 'shimmer', phrases: ['Casting her replacement…', 'Vetting 3 stand-ins…', 'Checking availability…'] } },
+  ],
+  11: [
+    { name: 'Maya', handle: '@maya.skin', stage: 3, status: { type: 'facts', phrases: ['📬 Delivered — unboxing soon'] } },
+    { name: 'Jade', handle: '@jadebythesea', stage: 3, status: { type: 'facts', phrases: ['📬 Delivered yesterday'] } },
+    { name: 'Nia', handle: '@niaglow', stage: 2, status: { type: 'facts', phrases: ['🚚 Out for delivery'] } },
+    { name: 'Sofia', handle: '@sofia.films', stage: 2, status: { type: 'facts', phrases: ['📦 In transit — arriving tomorrow'] } },
+    { name: 'Priya', handle: '@priyacreates', stage: 2, status: { type: 'facts', phrases: ['🚚 Out for delivery'] } },
+    { mystery: true, found: true, name: 'Your new match', stage: 0, status: { type: 'static', phrases: ['Review your new match'] } },
   ],
   16: [
     { name: 'Jade', handle: '@jadebythesea', stage: 4, action: { cta: 'Review reel' }, status: { type: 'static', phrases: ['Her reel passed every check — waiting on your approval since 9:40 am'] } },
@@ -136,6 +144,7 @@ export const CASTING_TIMELINE = [
 export const DAYS = [
   {
     day: 1,
+    phase: 'sourcing',
     scrubLabel: 'Day 1 · Launch',
     race: { you: 8, them: 2, caption: 'Day 1 — most brands are still writing the brief. Yours is already in the field.' },
     upNext: [
@@ -154,6 +163,7 @@ export const DAYS = [
   },
   {
     day: 3,
+    phase: 'review',
     scrubLabel: 'Day 3 · Creators ready',
     race: { you: 18, them: 5, caption: 'Day 3 and your shortlist is ready. <strong>Industry average: day 12.</strong>' },
     upNext: [
@@ -188,6 +198,25 @@ export const DAYS = [
         { emoji: '👋', bold: '2 delivery nudges sent', rest: ' — nothing needed your input' },
       ],
       closer: { clear: true, text: 'Nothing needs you until Thursday — all packages land' },
+    },
+  },
+  {
+    day: 11,
+    scrubLabel: 'Day 11 · Rematch found',
+    race: { you: 42, them: 16, caption: 'Day 11 — replacement found in 48 hours. <strong>Most agencies take two weeks.</strong>' },
+    upNext: [
+      { emoji: '✨', text: 'Your new match joins the crew', eta: 'right after your review' },
+      { emoji: '📦', text: 'Last packages deliver', eta: 'by tomorrow' },
+      { emoji: '🎬', text: 'First creators start filming', eta: 'this weekend' },
+    ],
+    recap: {
+      since: 'since Thursday',
+      items: [
+        { emoji: '🔁', bold: '1 replacement found', rest: ' — 96% fit, ready for your review' },
+        { emoji: '📬', bold: '2 packages delivered', rest: ' — 3 more on the truck' },
+        { emoji: '🗓', bold: '2 shoots scheduled', rest: ' for the weekend' },
+      ],
+      closer: { text: 'Your new match is waiting', cta: 'Review match' },
     },
   },
   {

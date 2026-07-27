@@ -32,12 +32,6 @@
 .cp-crew-left { min-width: 0; }
 .cp-tile-stack { display: flex; flex-direction: column; gap: 16px; }
 
-/* ---- Katie welcome card (day 1) ---- */
-.cp-katie-card { display: flex; gap: 12px; align-items: flex-start; background: linear-gradient(180deg, #faf7f1 0%, #fbf9f5 100%); border: 1px solid #f0e7d8; border-radius: 14px; padding: 16px 18px; animation: cp-in 0.45s cubic-bezier(0.22,1,0.36,1) both; }
-.cp-katie { flex: none; width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 17px; color: #fff; background: linear-gradient(135deg, #7a5cfa, #b48cff); border: 2.5px solid #fff; box-shadow: 0 3px 10px #7a5cfa3d; }
-.cp-katie-note { font-family: 'Caveat', cursive; font-size: 22px; line-height: 1.1; color: #8a6d2f; }
-.cp-katie-byline { font-size: 11.5px; color: #a08544; margin-top: 3px; }
-
 /* ---- per-creator stage history (expanded table rows) ---- */
 .cp-crew-history { padding: 2px 0 16px 56px; }
 .cp-hist-step { display: flex; gap: 12px; position: relative; padding-bottom: 14px; animation: cp-in 0.4s cubic-bezier(0.22,1,0.36,1) both; }
@@ -130,6 +124,22 @@
 .am2-col:first-child .am-tip { left: 0; transform: none; }
 .am2-col:last-child .am-tip { left: auto; right: 0; transform: none; }
 
+/* pre-campaign states — Figma 7199:20453 (Stay Tuned) / 7199:21448 (Found) */
+.am-state { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; min-height: 520px; padding: 40px 20px; animation: cp-in 0.45s cubic-bezier(0.22,1,0.36,1) both; }
+.am-state-img { display: block; width: 124px; height: 123px; object-fit: contain; }
+.am-state-copy { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.am-state-title { margin: 0; font-size: 22px; font-weight: 700; line-height: 25.96px; letter-spacing: -0.44px; color: #171717; text-align: center; }
+.am-state-sub { margin: 0; max-width: 432px; font-size: 18px; font-weight: 500; line-height: 23.76px; letter-spacing: -0.36px; color: #717171; text-align: center; }
+.am-state--found { gap: 24px; }
+.am-state-copy--found { gap: 12px; }
+.am-state-avatar { display: block; width: 80px; height: 80px; flex: none; overflow: hidden; border-radius: 999px; background: #f4f4f5; border: 4px solid #fff; box-shadow: 0 0 0 1px rgba(231,226,219,0.55); }
+.am-state-avatar img { display: block; width: 100%; height: 100%; object-fit: cover; filter: blur(3px); }
+.am-found-title { margin: 0; font-size: 18px; font-weight: 600; line-height: 22.5px; letter-spacing: 0.07px; color: #1c1c1c; text-align: center; }
+.am-found-title b { font-weight: 700; color: #7a5cfa; }
+.am-found-sub { margin: 0; max-width: 370px; font-size: 16px; font-weight: 400; line-height: 20.48px; color: #6f6f6f; text-align: center; }
+.am-found-btn { height: 48px; min-width: 198px; border: none; border-radius: 44px; background: #7a5cfa; padding: 0 28px; font-family: inherit; font-size: 18px; font-weight: 600; color: #fff; cursor: pointer; transition: background 0.15s ease; }
+.am-found-btn:hover { background: #5e41d6; }
+
 /* card shell — 16px radius, #e3e3e3, soft shadow, 64px header */
 .am-card { background: #fff; border: 1px solid #e3e3e3; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.03); animation: cp-in 0.45s cubic-bezier(0.22,1,0.36,1) both; }
 .am-card-head { display: flex; height: 64px; align-items: center; justify-content: space-between; border-bottom: 1px solid #e3e3e3; padding: 0 20px; }
@@ -152,6 +162,7 @@
 .am-who { display: flex; align-items: center; gap: 8px; min-width: 0; }
 .am-avatar { display: block; width: 36px; height: 36px; flex: none; overflow: hidden; border-radius: 50%; background: #fff; }
 .am-avatar img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.am-avatar--blur img { filter: blur(3px); }
 .am-avatar--mystery { display: grid; place-items: center; background: repeating-linear-gradient(45deg, #ece2d0, #ece2d0 6px, #f6efe2 6px, #f6efe2 12px); border: 2px dashed #d8c9ab; color: #a9987b; font-size: 14px; font-weight: 600; }
 .am-names { display: flex; flex-direction: column; min-width: 0; }
 .am-name { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #18181b; white-space: nowrap; overflow: hidden; }

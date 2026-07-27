@@ -20,6 +20,7 @@ const AIC = {
   chevron: `${B}labs/chevron.svg`,
   check: `${B}labs/check-circle.svg`,
   paceStrip: `${B}labs/pace-strip.jpg`,
+  stayTuned: `${B}labs/stay-tuned.png`,
 };
 
 /* Amine's 7-stage ramp — stages 1-4 Figma-exact, 5-7 his extrapolation;
@@ -39,7 +40,7 @@ export function amFunnel(scene) {
   const rows = CREW[scene.day] || [];
   const named = rows.filter((c) => !c.mystery);
   const casting = rows.length - named.length;
-  const ready = scene.day === 3;
+  const found = rows.filter((c) => c.mystery && c.found).length;
 
   const counts = AM_STAGES.map(() => 0);
   const needs = AM_STAGES.map(() => 0);
@@ -50,10 +51,9 @@ export function amFunnel(scene) {
     who[s].push(c.name);
     if (c.action) needs[s] += 1;
   });
-  if (ready) needs[0] = counts[0]; // the whole shortlist waits on the brand
 
   const reached = (i) => named.filter((c) => stageOf(c, scene.day) >= i).length;
-  return { rows, named, casting, counts, needs, who, reached, flagged: needs.reduce((a, b) => a + b, 0) };
+  return { rows, named, casting, found, counts, needs, who, reached, flagged: needs.reduce((a, b) => a + b, 0) + found };
 }
 
 function Tip({ title, summary, rows }) {
@@ -156,16 +156,23 @@ export function AmineRailBar({ scene, filter, onFilter }) {
     <div className="am2-rail" role="group" aria-label={`Creator funnel: ${PCT[scene.day]} through`}>
       {f.casting > 0 && (
         <RailColumn
-          label="Sourcing…"
-          hint={f.named.length ? 'Rematching you' : 'Matching you with creators'}
+          label={f.found ? 'Match found' : 'Sourcing…'}
+          hint={f.found
+            ? `${f.found} new ${f.found === 1 ? 'creator' : 'creators'} to review`
+            : f.named.length ? 'Rematching you' : 'Matching you with creators'}
           count={f.casting}
-          fill="#dbeee3"
-          ink="#06301f"
+          fill={f.found ? '#F5A041' : '#dbeee3'}
+          ink={f.found ? '#ffffff' : '#06301f'}
           radius={{ left: 74, right: 4 }}
           selected={filter === 'casting'}
-          dimmed={filtering && filter !== 'casting'}
+          dimmed={filtering && filter !== 'casting' && !(filter === 'needs' && f.found > 0)}
+          highlighted={filter === 'needs' && f.found > 0}
+          badge={f.found}
           onActivate={() => onFilter(filter === 'casting' ? null : 'casting')}
-          tip={<Tip title="Sourcing…" summary={`${f.casting} of ${total} here · being sourced right now`} />}
+          onBadge={() => onFilter(filter === 'needs' ? null : 'needs')}
+          tip={f.found
+            ? <Tip title="Match found" summary={`${f.found} of ${total} here · rematched, waiting on your review`} />
+            : <Tip title="Sourcing…" summary={`${f.casting} of ${total} here · being sourced right now`} />}
         />
       )}
       {AM_STAGES.map((s, i) => {
@@ -209,6 +216,34 @@ export function AmineProgress2({ scene, filter, onFilter }) {
     <div className="am-progress">
       <AmineStat scene={scene} />
       <AmineRailBar scene={scene} filter={filter} onFilter={onFilter} />
+    </div>
+  );
+}
+
+/* ---- pre-campaign states (Figma 7199:20453 / 7199:21448) ---------------- */
+export function StayTuned() {
+  return (
+    <div className="am-state">
+      <img className="am-state-img" src={AIC.stayTuned} alt="" />
+      <div className="am-state-copy">
+        <p className="am-state-title">Stay Tuned!</p>
+        <p className="am-state-sub">We're hand-picking creators who are the perfect fit for your campaign. We'll alert you via email and in-app notification.</p>
+      </div>
+    </div>
+  );
+}
+
+export function CreatorsFound({ count }) {
+  return (
+    <div className="am-state am-state--found">
+      <span className="am-state-avatar"><img src={PHOTOS.Maya} alt="" /></span>
+      <div className="am-state-copy am-state-copy--found">
+        <p className="am-found-title">
+          We Found <b>{count} {count === 1 ? 'creator' : 'creators'}</b> who are a great fit
+        </p>
+        <p className="am-found-sub">Review each profile and add the ones you'd like to invite to your campaign.</p>
+      </div>
+      <button type="button" className="am-found-btn">Review Creators</button>
     </div>
   );
 }
@@ -258,22 +293,25 @@ export function AmineTable({ scene, rows, filter, onFilter, openCrew, toggleCrew
           const open = openCrew.has(rowKey);
           const timeline = c.mystery ? CASTING_TIMELINE : TIMELINES[c.name] || [];
           const reached = c.mystery ? -1 : stageOf(c, scene.day);
-          const flaggedRow = !c.mystery && (!!c.action || scene.day === 3);
+          const foundRow = c.mystery && c.found;
+          const flaggedRow = (!c.mystery && !!c.action) || foundRow;
           return (
             <div key={rowKey} className="am-item">
-              <button type="button" className="am-row" onClick={() => toggleCrew(rowKey)} aria-expanded={open}>
+              <button type="button" className="am-row" onClick={foundRow ? undefined : () => toggleCrew(rowKey)} aria-expanded={foundRow ? undefined : open}>
                 <span className="am-who">
-                  {!c.mystery && PHOTOS[c.name] ? (
+                  {foundRow ? (
+                    <span className="am-avatar am-avatar--blur"><img src={PHOTOS.Amara} alt="" /></span>
+                  ) : !c.mystery && PHOTOS[c.name] ? (
                     <span className="am-avatar"><img src={PHOTOS[c.name]} alt="" /></span>
                   ) : (
                     <span className="am-avatar am-avatar--mystery">?</span>
                   )}
                   <span className="am-names">
                     <span className="am-name">
-                      {c.mystery ? 'Sourcing…' : c.name}
+                      {foundRow ? c.name : c.mystery ? 'Sourcing…' : c.name}
                       {!c.mystery && <img src={AIC.check} alt="Verified" className="am-verified" />}
                     </span>
-                    <span className="am-handle">{c.mystery ? 'sourcing now' : c.handle}</span>
+                    <span className="am-handle">{foundRow ? 'found this morning · 96% fit' : c.mystery ? 'sourcing now' : c.handle}</span>
                   </span>
                 </span>
                 <span className={`am-update${flaggedRow ? ' am-update--flag' : ''}`}>
@@ -286,7 +324,7 @@ export function AmineTable({ scene, rows, filter, onFilter, openCrew, toggleCrew
                   ))}
                 </span>
                 <span className="am-chev">
-                  <img src={AIC.chevron} alt="" style={{ rotate: open ? '270deg' : '90deg' }} />
+                  {!foundRow && <img src={AIC.chevron} alt="" style={{ rotate: open ? '270deg' : '90deg' }} />}
                 </span>
               </button>
               {open && (
