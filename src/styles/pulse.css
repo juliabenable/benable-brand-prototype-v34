@@ -101,13 +101,6 @@
 /* 20px round needs-you badge (Julia: the 14px pill read squished) */
 .am-badge { pointer-events: none; position: absolute; top: -9px; right: 1px; display: flex; height: 20px; min-width: 20px; align-items: center; justify-content: center; border-radius: 999px; border: 1.5px solid #fff; background: #e0900f; padding: 0 5px; font-size: 11px; font-weight: 800; line-height: 1; letter-spacing: 0.0923px; color: #fff; filter: drop-shadow(0 1px 2px rgba(180,83,9,0.28)); z-index: 2; }
 
-/* segment tooltip — Amine's dark card */
-.am-tip { display: none; position: absolute; bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%); z-index: 60; width: max-content; max-width: 300px; border-radius: 10px; background: #1c1c1c; padding: 10px 12px; text-align: left; color: #fff; box-shadow: 0 8px 24px rgba(0,0,0,0.24); pointer-events: none; }
-.am-tip-title { font-size: 13px; font-weight: 600; }
-.am-tip-sub { font-size: 12px; line-height: 16px; color: #c9c9c9; margin-top: 2px; white-space: normal; }
-.am-tip-rule { display: block; height: 1px; background: rgba(255,255,255,0.15); margin: 8px 0; }
-.am-tip-rows { display: flex; flex-direction: column; gap: 3px; font-size: 12px; line-height: 16px; }
-
 /* the stage rail — his V2: equal columns, 4px gap, 40px slabs
    (74px left / 100px right outer corners, 4px interior), label 12.5/600 +
    two-line hint 11.5/400 in a fixed 49px block */
@@ -120,9 +113,6 @@
 .am2-leg { display: flex; height: 49px; flex-direction: column; align-items: flex-start; overflow: hidden; padding: 0 7px 0 8px; }
 .am2-label { margin: 0; font-size: 12.5px; font-weight: 600; line-height: 16.25px; letter-spacing: -0.0366px; color: #1a1a1a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
 .am2-hint { margin: 0; font-size: 11.5px; line-height: 16.1px; letter-spacing: 0.0337px; color: #9a9a9a; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.am2-bar:hover .am-tip, .am2-bar:focus-visible .am-tip { display: flex; flex-direction: column; }
-.am2-col:first-child .am-tip { left: 0; transform: none; }
-.am2-col:last-child .am-tip { left: auto; right: 0; transform: none; }
 
 /* pre-campaign states — Figma 7199:20453 (Stay Tuned) / 7199:21448 (Found) */
 .am-state { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; min-height: 520px; padding: 40px 20px; animation: cp-in 0.45s cubic-bezier(0.22,1,0.36,1) both; }

@@ -56,23 +56,6 @@ export function amFunnel(scene) {
   return { rows, named, casting, found, counts, needs, who, reached, flagged: needs.reduce((a, b) => a + b, 0) + found };
 }
 
-function Tip({ title, summary, rows }) {
-  return (
-    <span className="am-tip" role="tooltip">
-      <b className="am-tip-title">{title}</b>
-      <span className="am-tip-sub">{summary}</span>
-      {rows && rows.length > 0 && (
-        <>
-          <i className="am-tip-rule" />
-          <span className="am-tip-rows">
-            {rows.map((r) => <span key={r}>{r}</span>)}
-          </span>
-        </>
-      )}
-    </span>
-  );
-}
-
 /* ---- stat row: "Your campaign progress N%" + schedule note (Tony) ------ */
 export function AmineStat({ scene }) {
   const wrapped = scene.day === 30;
@@ -114,7 +97,7 @@ const AM2_RAIL = [
   { fill: '#124a33', ink: '#ffffff', hint: (n) => (n ? 'All done!' : 'After posts go live') },
 ];
 
-function RailColumn({ label, hint, count, fill, hatchClass, ink, radius, disabled, selected, dimmed, highlighted, badge, onActivate, onBadge, tip }) {
+function RailColumn({ label, hint, count, fill, hatchClass, ink, radius, disabled, selected, dimmed, highlighted, badge, onActivate, onBadge }) {
   return (
     <div className={`am2-col${dimmed ? ' am-dim' : ''}`}>
       <button
@@ -126,7 +109,6 @@ function RailColumn({ label, hint, count, fill, hatchClass, ink, radius, disable
         onClick={disabled ? undefined : onActivate}
       >
         <span className="am2-count" style={{ color: ink }}>{count}</span>
-        {tip}
       </button>
       {badge > 0 && (
         <button
@@ -170,9 +152,6 @@ export function AmineRailBar({ scene, filter, onFilter }) {
           badge={f.found}
           onActivate={() => onFilter(filter === 'casting' ? null : 'casting')}
           onBadge={() => onFilter(filter === 'needs' ? null : 'needs')}
-          tip={f.found
-            ? <Tip title="Match found" summary={`${f.found} of ${total} here · rematched, waiting on your review`} />
-            : <Tip title="Sourcing…" summary={`${f.casting} of ${total} here · being sourced right now`} />}
         />
       )}
       {AM_STAGES.map((s, i) => {
@@ -197,13 +176,6 @@ export function AmineRailBar({ scene, filter, onFilter }) {
             badge={f.needs[i]}
             onActivate={() => onFilter(active ? null : i)}
             onBadge={() => onFilter(filter === 'needs' ? null : 'needs')}
-            tip={!empty && (
-              <Tip
-                title={s.label}
-                summary={`${n} of ${f.named.length} here · ${Math.round((f.reached(i) / (f.named.length || 1)) * 100)}% reached this stage or beyond`}
-                rows={f.who[i]}
-              />
-            )}
           />
         );
       })}
