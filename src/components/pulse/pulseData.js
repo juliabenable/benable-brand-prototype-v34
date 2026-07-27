@@ -185,17 +185,17 @@ export const DAYS = [
     scrubLabel: 'Day 9 · Cooking',
     race: { you: 34, them: 12, caption: 'Day 9 — a typical agency would <strong>still be negotiating contracts</strong>. Your products are already in the mail.' },
     upNext: [
-      { emoji: '📦', text: 'All packages delivered', eta: 'by Thursday' },
+      { emoji: '📦', text: 'All packages delivered', eta: 'on track for Thursday' },
       { emoji: '🔁', text: 'Replacement picks for Lena', eta: 'within 48h — we’ll ping you' },
       { emoji: '🎬', text: 'First creators start filming', eta: 'this weekend' },
     ],
     recap: {
       since: 'since Friday',
       items: [
-        { emoji: '✅', bold: '5 of 6 creators confirmed', rest: ' and ready to go' },
-        { emoji: '📦', bold: '4 packages shipped', rest: ' — first one already delivered' },
-        { emoji: '🔁', bold: '3 stand-ins vetted', rest: ' for Lena’s replacement' },
-        { emoji: '👋', bold: '2 delivery nudges sent', rest: ' — nothing needed your input' },
+        { emoji: '✉️', bold: '6 invites sent', rest: ' — the moment you approved your picks' },
+        { emoji: '👀', bold: '4 of 6 viewed their invite', rest: ' — acceptances usually land within a day' },
+        { emoji: '👋', bold: '2 reminders to accept sent', rest: ' — nothing needed your input' },
+        { emoji: '🔁', bold: '1 creator declined', rest: ' — we’re already sourcing replacements' },
       ],
       closer: { clear: true, text: 'Nothing needs you until Thursday — all packages land' },
     },
@@ -205,7 +205,7 @@ export const DAYS = [
     scrubLabel: 'Day 11 · Rematch found',
     race: { you: 42, them: 16, caption: 'Day 11 — replacement found in 48 hours. <strong>Most agencies take two weeks.</strong>' },
     upNext: [
-      { emoji: '✨', text: 'Your replacement joins the crew', eta: 'right after you pick' },
+      { emoji: '✨', text: 'Pick who you want to add to this campaign', eta: 'waiting on you' },
       { emoji: '📦', text: 'Last packages deliver', eta: 'by tomorrow' },
       { emoji: '🎬', text: 'First creators start filming', eta: 'this weekend' },
     ],
@@ -214,7 +214,7 @@ export const DAYS = [
       items: [
         { emoji: '🔁', bold: 'Replacement matches found', rest: ' — profiles ready for your review' },
         { emoji: '📬', bold: '2 packages delivered', rest: ' — 3 more on the truck' },
-        { emoji: '🗓', bold: '2 shoots scheduled', rest: ' for the weekend' },
+        { emoji: '⏰', bold: 'Deadline reminders sent', rest: ' to keep everyone on pace' },
       ],
       closer: { text: 'New matches are waiting', cta: 'Review matches' },
     },
@@ -224,15 +224,14 @@ export const DAYS = [
     scrubLabel: 'Day 16 · First content',
     race: { you: 58, them: 24, caption: 'First content on day 16. <strong>Industry average: day 41.</strong>' },
     upNext: [
-      { emoji: '📣', text: 'First posts go live once you approve', eta: '~2 days after approval' },
+      { emoji: '📣', text: 'First posts go live', eta: 'after quality checks!' },
       { emoji: '🎥', text: '3 more creators film this week', eta: 'submissions by Sunday' },
     ],
     recap: {
       since: 'since Sunday',
       items: [
-        { emoji: '🎬', bold: '2 videos submitted', rest: ' — Jade’s reel is a stunner' },
-        { emoji: '📬', bold: 'All products delivered', rest: ' across the crew' },
-        { emoji: '🗓', bold: '3 shoots scheduled', rest: ' for this week' },
+        { emoji: '📬', bold: 'All products delivered', rest: ' — the creators are creating!' },
+        { emoji: '🎬', bold: '2 videos submitted for review', rest: ' — Katie’s team is reviewing them for quality' },
       ],
       closer: { text: '2 new videos are ready for a look', cta: 'Watch the first cuts' },
     },
@@ -242,8 +241,8 @@ export const DAYS = [
     scrubLabel: 'Day 22 · Going live',
     race: { you: 80, them: 31, caption: 'Day 22 — you’re moving about <strong>2.6× faster</strong> than a typical campaign.' },
     upNext: [
-      { emoji: '⏰', text: 'Maya’s post goes live', eta: 'Thursday' },
-      { emoji: '🏁', text: 'Campaign wrap + your content library', eta: 'in 8 days' },
+      { emoji: '⏰', text: 'Last creators go live', eta: 'this week' },
+      { emoji: '🏁', text: 'Campaign wrap', eta: 'we’ll send you your campaign recap' },
     ],
     recap: {
       since: 'since Monday',
@@ -251,6 +250,7 @@ export const DAYS = [
         { emoji: '📣', bold: '3 posts went live', rest: ' on IG & TikTok' },
         { emoji: '👀', bold: '18.2k views', rest: ' and climbing' },
         { emoji: '🔗', bold: 'Links shared by all 3', rest: ' — bio + pinned comments' },
+        { emoji: '💬', bold: 'People are loving it', rest: ' — “best SPF I’ve tried, hands down” · @niaglow' },
       ],
       closer: { text: 'Nia’s reel is taking off', cta: 'Open the post' },
     },
@@ -268,7 +268,6 @@ export const DAYS = [
         { emoji: '🏆', bold: 'Top post: 18.9k views', rest: ' — Nia’s reel' },
         { emoji: '🔗', bold: '1,142 link taps', rest: ' across all posts' },
         { emoji: '💌', bold: 'Thank-yous sent', rest: ' to all 6 creators' },
-        { emoji: '📦', bold: '9 content files', rest: ' added to your library' },
       ],
       closer: { text: 'Your wrap-up is ready', cta: 'See the wrap-up' },
     },
