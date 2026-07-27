@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rail content states — While you were away · Up next</title>
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  body { font-family: -apple-system, "system-ui", "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f9fafb; color: #1c1c1c; padding: 40px 24px 80px; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 980px; margin: 0 auto; }
+  h1 { font-size: 26px; letter-spacing: -0.4px; margin-bottom: 6px; }
+  .sub { color: #717171; font-size: 14.5px; margin-bottom: 28px; }
+  h2 { font-size: 17px; margin: 36px 0 12px; }
+  .card { background: #fff; border: 1px solid #e3e3e3; border-radius: 16px; padding: 20px 22px; margin-bottom: 14px; box-shadow: 0 4px 8px rgba(0,0,0,0.03); }
+  .rule { display: flex; gap: 10px; padding: 9px 0; font-size: 14px; line-height: 1.55; color: #444; border-bottom: 1px solid #f0f0f0; }
+  .rule:last-child { border-bottom: none; }
+  .rule b { color: #1c1c1c; }
+  .rule .n { flex: none; width: 22px; height: 22px; border-radius: 999px; background: #f5f3fc; color: #7a5cfa; font-size: 12px; font-weight: 700; display: grid; place-items: center; margin-top: 1px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th { text-align: left; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #717171; padding: 10px 12px; background: #fafafa; border-bottom: 1px solid #e3e3e3; }
+  td { padding: 12px; border-bottom: 1px solid #f0f0f0; vertical-align: top; line-height: 1.55; color: #444; }
+  tr:last-child td { border-bottom: none; }
+  .day { font-weight: 700; color: #1c1c1c; white-space: nowrap; }
+  .since { color: #9a9a9a; font-size: 12px; }
+  .item b { color: #1c1c1c; font-weight: 600; }
+  .eta { color: #9a9a9a; }
+  .phase { display: inline-block; background: #fff0ce; color: #a85321; border-radius: 999px; padding: 3px 10px; font-size: 12px; font-weight: 600; }
+  .note { background: #f5f3fc; border-radius: 10px; padding: 12px 16px; font-size: 13px; color: #444; line-height: 1.55; margin-top: 10px; }
+  .note b { color: #1c1c1c; }
+  code { background: #f4f4f5; border-radius: 5px; padding: 1px 6px; font-size: 12.5px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Rail content states</h1>
+  <p class="sub">Everything the "While you were away" and "Up next" cards can show, and the rules behind them · benable-brand-prototype-v34</p>
+
+  <h2>The logic</h2>
+  <div class="card">
+    <div class="rule"><span class="n">1</span><span><b>The cards only exist on live-dashboard days.</b> Days 1 and 3 are pre-campaign phases (Stay&nbsp;Tuned / Creators&nbsp;Found) with no rail at all, so their content starts at Day&nbsp;9.</span></div>
+    <div class="rule"><span class="n">2</span><span><b>In the prototype, every line is hand-written per demo day</b> in <code>pulseData.js → DAYS</code>. Nothing is derived — each day carries a <code>recap</code> (a "since" anchor + 3–4 items) and an <code>upNext</code> list (2–3 items with ETAs). The tables below are that content, verbatim.</span></div>
+    <div class="rule"><span class="n">3</span><span><b>The production intent:</b> "While you were away" = the ranked deltas since the brand's last visit (what got handled for them, biggest first, max ~4); "Up next" = the nearest future events with honest ETAs (max ~3). The demo copy models the tone for both.</span></div>
+    <div class="rule"><span class="n">4</span><span><b>Anatomy:</b> recap items are <i>bold fact + quiet tail</i> ("<b>4 packages shipped</b> — first one already delivered"); up-next items are <i>bold event + "— eta"</i>. Emoji leads every line.</span></div>
+    <div class="rule"><span class="n">5</span><span><b>Copy rules</b> (repo law): no zeros — a row shows a sentence about what's happening, never "0"; operational claims say "Katie's team"; no struggle updates — rematches read as reassurance ("3 stand-ins vetted", "Replacement matches found").</span></div>
+    <div class="rule"><span class="n">6</span><span><b>Time voice, everywhere:</b> the past gets real dates (Jul 16…), the present is "right now", and the future is always plain <b>"up next"</b> — per-step ETAs were removed from the timeline (Jul 27); precise ETAs live only in the "Up next" card, where they're a promise we track.</span></div>
+    <div class="note">The data also carries a <code>recap.closer</code> per day (a CTA line like "New matches are waiting · Review matches") — the current Amine card design doesn't render it; it's kept in the data as the hook for a future notification/CTA slot.</div>
+  </div>
+
+  <h2>While you were away — all states</h2>
+  <div class="card" style="padding:0; overflow:hidden;">
+    <table>
+      <tr><th style="width:130px">Day</th><th style="width:110px">Since</th><th>Items</th></tr>
+      <tr><td class="day">Day 1 · Launch</td><td colspan="2"><span class="phase">not shown</span> — page is the "Stay Tuned!" state</td></tr>
+      <tr><td class="day">Day 3 · Creators ready</td><td colspan="2"><span class="phase">not shown</span> — page is the "We Found 6 creators" review state</td></tr>
+      <tr><td class="day">Day 9 · Cooking</td><td class="since">since Friday</td><td class="item">✅ <b>5 of 6 creators confirmed</b> and ready to go<br>📦 <b>4 packages shipped</b> — first one already delivered<br>🔁 <b>3 stand-ins vetted</b> for Lena's replacement<br>👋 <b>2 delivery nudges sent</b> — nothing needed your input</td></tr>
+      <tr><td class="day">Day 11 · Rematch found</td><td class="since">since Thursday</td><td class="item">🔁 <b>Replacement matches found</b> — profiles ready for your review<br>📬 <b>2 packages delivered</b> — 3 more on the truck<br>🗓 <b>2 shoots scheduled</b> for the weekend</td></tr>
+      <tr><td class="day">Day 16 · First content</td><td class="since">since Sunday</td><td class="item">🎬 <b>2 videos submitted</b> — Jade's reel is a stunner<br>📬 <b>All products delivered</b> across the crew<br>🗓 <b>3 shoots scheduled</b> for this week</td></tr>
+      <tr><td class="day">Day 22 · Going live</td><td class="since">since Monday</td><td class="item">📣 <b>3 posts went live</b> on IG &amp; TikTok<br>👀 <b>18.2k views</b> and climbing<br>🔗 <b>Links shared by all 3</b> — bio + pinned comments</td></tr>
+      <tr><td class="day">Day 30 · Wrap</td><td class="since">since last week</td><td class="item">🏆 <b>Top post: 18.9k views</b> — Nia's reel<br>🔗 <b>1,142 link taps</b> across all posts<br>💌 <b>Thank-yous sent</b> to all 6 creators<br>📦 <b>9 content files</b> added to your library</td></tr>
+    </table>
+  </div>
+
+  <h2>Up next — all states</h2>
+  <div class="card" style="padding:0; overflow:hidden;">
+    <table>
+      <tr><th style="width:130px">Day</th><th>Items</th></tr>
+      <tr><td class="day">Day 1 · Launch</td><td><span class="phase">not shown</span></td></tr>
+      <tr><td class="day">Day 3 · Creators ready</td><td><span class="phase">not shown</span></td></tr>
+      <tr><td class="day">Day 9 · Cooking</td><td class="item">📦 <b>All packages delivered</b> <span class="eta">— by Thursday</span><br>🔁 <b>Replacement picks for Lena</b> <span class="eta">— within 48h — we'll ping you</span><br>🎬 <b>First creators start filming</b> <span class="eta">— this weekend</span></td></tr>
+      <tr><td class="day">Day 11 · Rematch found</td><td class="item">✨ <b>Your replacement joins the crew</b> <span class="eta">— right after you pick</span><br>📦 <b>Last packages deliver</b> <span class="eta">— by tomorrow</span><br>🎬 <b>First creators start filming</b> <span class="eta">— this weekend</span></td></tr>
+      <tr><td class="day">Day 16 · First content</td><td class="item">📣 <b>First posts go live once you approve</b> <span class="eta">— ~2 days after approval</span><br>🎥 <b>3 more creators film this week</b> <span class="eta">— submissions by Sunday</span></td></tr>
+      <tr><td class="day">Day 22 · Going live</td><td class="item">⏰ <b>Maya's post goes live</b> <span class="eta">— Thursday</span><br>🏁 <b>Campaign wrap + your content library</b> <span class="eta">— in 8 days</span></td></tr>
+      <tr><td class="day">Day 30 · Wrap</td><td class="item">🚀 <b>Campaign #2 — same crew or fresh faces</b> <span class="eta">— whenever you're ready</span></td></tr>
+    </table>
+  </div>
+</div>
+</body>
+</html>

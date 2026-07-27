@@ -311,7 +311,7 @@ export function AmineTable({ scene, rows, filter, onFilter, openCrew, toggleCrew
                           <div className="cp-hist-body">
                             <div className="cp-hist-top">
                               <span className="cp-hist-label">{c.mystery ? st.label : STAGE_LABELS[si]}</span>
-                              <span className="cp-hist-when">{state === 'done' ? (st.when || 'done') : state === 'now' ? 'right now' : (st.eta || 'up next')}</span>
+                              <span className="cp-hist-when">{state === 'done' ? (st.when || 'done') : state === 'now' ? 'right now' : 'up next'}</span>
                             </div>
                             <div className="cp-hist-detail">{st.detail}</div>
                             {state === 'now' && <div className="cp-hist-live"><LiveStatus status={c.status} /></div>}
