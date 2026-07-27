@@ -73,6 +73,55 @@
       <tr><td class="day">Day 30 · Wrap</td><td class="item">🚀 <b>Campaign #2 — same crew or fresh faces</b> <span class="eta">— whenever you're ready</span></td></tr>
     </table>
   </div>
+
+  <h2>Creator rows — the four anatomies</h2>
+  <div class="card">
+    <div class="rule"><span class="n">1</span><span><b>Standard row</b> — photo avatar, name + blue verified check, @handle · status line (see registers below) · 7 purple stage dashes filled through the current stage · chevron; clicking expands the dated stage-history timeline (dates → "right now" → "up next").</span></div>
+    <div class="rule"><span class="n">2</span><span><b>Action row</b> — a standard row whose status turns <b style="color:#e0900f">⚑ orange</b> because something waits on the brand (<code>action</code> on the creator, e.g. Day 16 Jade's reel approval). Action rows <b>sort to the top</b> of the table and count into the rail's amber badge + Needs-you filter.</span></div>
+    <div class="rule"><span class="n">3</span><span><b>Sourcing row</b> — hatched "?" avatar, name "Sourcing…", handle "sourcing now", shimmer status (rotating machine verbs), empty dashes; expands to the sourcing timeline (Brief studied → Scanning → Shortlisting → Your review).</span></div>
+    <div class="rule"><span class="n">4</span><span><b>Matches-found row</b> — the sourcing row after a rematch succeeds (<code>found: true</code>): blurred tease photo, "New matches found", "for Lena's spot · found this morning", <b style="color:#e0900f">⚑ Review new matches</b>; no expansion (review happens in the flow), sorts to top, feeds the rail badge.</span></div>
+    <div class="note"><b>Status motion registers</b> (the status line is a <code>LiveStatus</code>, and every animation is a claim): <b>shimmer</b> = machine working right now (gradient sweep, rotating phrases) · <b>katie</b> = a human present (avatar + online dot + typing, never a spinner) · <b>heartbeat</b> = watching something live (one still sentence, gentle breathe) · <b>celebrate</b> = go-live (emoji bounces, words hold still) · <b>facts</b>/<b>static</b> = quiet truths, no motion. Emoji are stripped from status text at render — only celebrate keeps its one bouncing emoji.</div>
+  </div>
+
+  <h2>Every creator state, by day</h2>
+  <div class="card" style="padding:0; overflow:hidden;">
+    <table>
+      <tr><th style="width:120px">Day</th><th style="width:130px">Creator</th><th style="width:130px">Stage</th><th>Status line · register</th></tr>
+      <tr><td class="day">Day 1 · Launch</td><td colspan="3"><span class="phase">no table</span> — "Stay Tuned!" state (3 sourcing slots exist in data, unseen)</td></tr>
+      <tr><td class="day">Day 3 · Creators ready</td><td colspan="3"><span class="phase">no table</span> — "We Found 6 creators" review state</td></tr>
+      <tr><td class="day" rowspan="6">Day 9 · Cooking</td><td>Maya</td><td>Order placed</td><td class="item">Cleared the Memphis hub <span class="eta">· facts</span></td></tr>
+      <tr><td>Nia</td><td>Order placed</td><td class="item">Picked SPF 50 Tinted <span class="eta">· facts</span></td></tr>
+      <tr><td>Sofia</td><td>Accepted</td><td class="item">Confirmed — shipping next <span class="eta">· static</span></td></tr>
+      <tr><td>Jade</td><td>Order placed</td><td class="item">Delivered yesterday <span class="eta">· facts</span></td></tr>
+      <tr><td>Priya</td><td>Accepted</td><td class="item">Sketching content ideas <span class="eta">· facts</span></td></tr>
+      <tr><td>Sourcing…</td><td>—</td><td class="item">Casting her replacement… / Vetting 3 stand-ins… / Checking availability… <span class="eta">· shimmer, rotating</span></td></tr>
+      <tr><td class="day" rowspan="6">Day 11 · Rematch found</td><td><b>New matches found</b></td><td>—</td><td class="item"><b style="color:#e0900f">⚑ Review new matches</b> <span class="eta">· action, sorts to top, no expansion</span></td></tr>
+      <tr><td>Maya</td><td>Order received</td><td class="item">Delivered — unboxing soon <span class="eta">· facts</span></td></tr>
+      <tr><td>Jade</td><td>Order received</td><td class="item">Delivered yesterday <span class="eta">· facts</span></td></tr>
+      <tr><td>Nia</td><td>Order placed</td><td class="item">Out for delivery <span class="eta">· facts</span></td></tr>
+      <tr><td>Sofia</td><td>Order placed</td><td class="item">In transit — arriving tomorrow <span class="eta">· facts</span></td></tr>
+      <tr><td>Priya</td><td>Order placed</td><td class="item">Out for delivery <span class="eta">· facts</span></td></tr>
+      <tr><td class="day" rowspan="6">Day 16 · First content</td><td><b>Jade</b></td><td>Draft submitted</td><td class="item"><b style="color:#e0900f">⚑ Her reel passed every check — waiting on your approval since 9:40 am</b> <span class="eta">· action, sorts to top</span></td></tr>
+      <tr><td>Priya</td><td>Draft submitted</td><td class="item">Verifying your required link… / Checking the disclosure tag… / Running brand-safety checks… <span class="eta">· shimmer, rotating</span></td></tr>
+      <tr><td>Maya</td><td>Order received</td><td class="item">Filming Saturday — confirmed Tuesday <span class="eta">· facts</span></td></tr>
+      <tr><td>Nia</td><td>Order received</td><td class="item">Posted a BTS teaser to stories <span class="eta">· facts</span></td></tr>
+      <tr><td>Sofia</td><td>Order received</td><td class="item">Storyboarding her before/after <span class="eta">· facts</span></td></tr>
+      <tr><td>Amara</td><td>Order received</td><td class="item">First shoot this week <span class="eta">· facts</span></td></tr>
+      <tr><td class="day" rowspan="6">Day 22 · Going live</td><td>Nia</td><td>Content published</td><td class="item">🎉 Live — 3× more first-hour views than her typical videos <span class="eta">· celebrate</span></td></tr>
+      <tr><td>Sofia</td><td>Content published</td><td class="item">💬 Live on TikTok — already getting comments <span class="eta">· celebrate</span></td></tr>
+      <tr><td>Jade</td><td>Content published</td><td class="item">✨ Live — engagement is starting · 214 link taps <span class="eta">· celebrate</span></td></tr>
+      <tr><td>Maya</td><td>Draft submitted</td><td class="item">Posting Thursday <span class="eta">· facts</span></td></tr>
+      <tr><td>Priya</td><td>Draft submitted</td><td class="item">Katie's team is scheduling her post <span class="eta">· katie (avatar + typing)</span></td></tr>
+      <tr><td>Amara</td><td>Order received</td><td class="item">Final edits — due Sunday <span class="eta">· facts</span></td></tr>
+      <tr><td class="day" rowspan="6">Day 30 · Wrap</td><td>Nia</td><td>Thanked</td><td class="item">18.9k views — your top post · thank-you sent <span class="eta">· static</span></td></tr>
+      <tr><td>Jade</td><td>Thanked</td><td class="item">Fan favorite — 6.1% engagement · thank-you sent <span class="eta">· static</span></td></tr>
+      <tr><td>Sofia</td><td>Thanked</td><td class="item">2 posts live · thank-you sent <span class="eta">· static</span></td></tr>
+      <tr><td>Maya</td><td>Thanked</td><td class="item">Posted + link shared · thank-you sent <span class="eta">· static</span></td></tr>
+      <tr><td>Priya</td><td>Thanked</td><td class="item">Posted + link shared · thank-you sent <span class="eta">· static</span></td></tr>
+      <tr><td>Amara</td><td>Thanked</td><td class="item">Posted — strong debut · thank-you sent <span class="eta">· static</span></td></tr>
+    </table>
+  </div>
+  <div class="note" style="margin-top:14px"><b>Where the stage comes from:</b> each creator carries one number — the furthest crew stage reached (0–5) — which maps 1:1 onto the rail's 7 stages; on Day 30 everyone maps to Thanked. The dashes, the rail counts, the "N on this campaign" subtitle, and the badge all derive from that single field, so they can never disagree.</div>
 </div>
 </body>
 </html>
