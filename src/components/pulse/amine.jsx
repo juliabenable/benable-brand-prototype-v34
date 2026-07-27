@@ -97,14 +97,14 @@ const AM2_RAIL = [
   { fill: '#124a33', ink: '#ffffff', hint: (n) => (n ? 'All done!' : 'After posts go live') },
 ];
 
-function RailColumn({ label, hint, count, fill, hatchClass, ink, radius, disabled, selected, dimmed, highlighted, badge, onActivate, onBadge }) {
+function RailColumn({ label, hint, count, fill, hatchClass, ink, radius, disabled, selected, dimmed, badge, onActivate, onBadge }) {
   return (
     <div className={`am2-col${dimmed ? ' am-dim' : ''}`}>
       <button
         type="button"
         disabled={disabled}
         aria-pressed={disabled ? undefined : selected}
-        className={`am2-bar${hatchClass ? ` ${hatchClass}` : ''}${selected ? ' am-seg--active' : ''}${highlighted ? ' am-seg--glow' : ''}`}
+        className={`am2-bar${hatchClass ? ` ${hatchClass}` : ''}${selected ? ' am-seg--active' : ''}`}
         style={{ background: fill, borderRadius: `${radius.left}px ${radius.right}px ${radius.right}px ${radius.left}px` }}
         onClick={disabled ? undefined : onActivate}
       >
@@ -138,17 +138,16 @@ export function AmineRailBar({ scene, filter, onFilter }) {
     <div className="am2-rail" role="group" aria-label={`Creator funnel: ${PCT[scene.day]} through`}>
       {f.casting > 0 && (
         <RailColumn
-          label={f.found ? 'Match found' : 'Sourcing…'}
+          label={f.found ? 'Matches found' : 'Sourcing…'}
           hint={f.found
-            ? `${f.found} new ${f.found === 1 ? 'creator' : 'creators'} to review`
+            ? 'New profiles to review'
             : f.named.length ? 'Rematching you' : 'Matching you with creators'}
           count={f.casting}
-          fill={f.found ? '#F5A041' : '#dbeee3'}
-          ink={f.found ? '#ffffff' : '#06301f'}
+          fill="#dbeee3"
+          ink="#06301f"
           radius={{ left: 74, right: 4 }}
           selected={filter === 'casting'}
           dimmed={filtering && filter !== 'casting' && !(filter === 'needs' && f.found > 0)}
-          highlighted={filter === 'needs' && f.found > 0}
           badge={f.found}
           onActivate={() => onFilter(filter === 'casting' ? null : 'casting')}
           onBadge={() => onFilter(filter === 'needs' ? null : 'needs')}
@@ -172,7 +171,6 @@ export function AmineRailBar({ scene, filter, onFilter }) {
             disabled={empty}
             selected={active}
             dimmed={filtering && !active && !(filter === 'needs' && f.needs[i] > 0)}
-            highlighted={filter === 'needs' && f.needs[i] > 0}
             badge={f.needs[i]}
             onActivate={() => onFilter(active ? null : i)}
             onBadge={() => onFilter(filter === 'needs' ? null : 'needs')}
@@ -283,7 +281,7 @@ export function AmineTable({ scene, rows, filter, onFilter, openCrew, toggleCrew
                       {foundRow ? c.name : c.mystery ? 'Sourcing…' : c.name}
                       {!c.mystery && <img src={AIC.check} alt="Verified" className="am-verified" />}
                     </span>
-                    <span className="am-handle">{foundRow ? 'found this morning · 96% fit' : c.mystery ? 'sourcing now' : c.handle}</span>
+                    <span className="am-handle">{foundRow ? 'for Lena’s spot · found this morning' : c.mystery ? 'sourcing now' : c.handle}</span>
                   </span>
                 </span>
                 <span className={`am-update${flaggedRow ? ' am-update--flag' : ''}`}>

@@ -47,7 +47,7 @@ export const CREW = {
     { name: 'Nia', handle: '@niaglow', stage: 2, status: { type: 'facts', phrases: ['🚚 Out for delivery'] } },
     { name: 'Sofia', handle: '@sofia.films', stage: 2, status: { type: 'facts', phrases: ['📦 In transit — arriving tomorrow'] } },
     { name: 'Priya', handle: '@priyacreates', stage: 2, status: { type: 'facts', phrases: ['🚚 Out for delivery'] } },
-    { mystery: true, found: true, name: 'Your new match', stage: 0, status: { type: 'static', phrases: ['Review your new match'] } },
+    { mystery: true, found: true, name: 'New matches found', stage: 0, status: { type: 'static', phrases: ['Review new matches'] } },
   ],
   16: [
     { name: 'Jade', handle: '@jadebythesea', stage: 4, action: { cta: 'Review reel' }, status: { type: 'static', phrases: ['Her reel passed every check — waiting on your approval since 9:40 am'] } },
@@ -205,18 +205,18 @@ export const DAYS = [
     scrubLabel: 'Day 11 · Rematch found',
     race: { you: 42, them: 16, caption: 'Day 11 — replacement found in 48 hours. <strong>Most agencies take two weeks.</strong>' },
     upNext: [
-      { emoji: '✨', text: 'Your new match joins the crew', eta: 'right after your review' },
+      { emoji: '✨', text: 'Your replacement joins the crew', eta: 'right after you pick' },
       { emoji: '📦', text: 'Last packages deliver', eta: 'by tomorrow' },
       { emoji: '🎬', text: 'First creators start filming', eta: 'this weekend' },
     ],
     recap: {
       since: 'since Thursday',
       items: [
-        { emoji: '🔁', bold: '1 replacement found', rest: ' — 96% fit, ready for your review' },
+        { emoji: '🔁', bold: 'Replacement matches found', rest: ' — profiles ready for your review' },
         { emoji: '📬', bold: '2 packages delivered', rest: ' — 3 more on the truck' },
         { emoji: '🗓', bold: '2 shoots scheduled', rest: ' for the weekend' },
       ],
-      closer: { text: 'Your new match is waiting', cta: 'Review match' },
+      closer: { text: 'New matches are waiting', cta: 'Review matches' },
     },
   },
   {

@@ -77,12 +77,16 @@ export default function CampaignPulse() {
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
-  const crewRows = (CREW[scene.day] || []).filter((c) => {
-    if (stageFilter == null) return true;
-    if (stageFilter === 'casting') return !!c.mystery;
-    if (stageFilter === 'needs') return (c.mystery && c.found) || (!c.mystery && !!c.action);
-    return !c.mystery && stageOf(c, scene.day) === stageFilter;
-  });
+  const needsAction = (c) => (c.mystery && c.found) || (!c.mystery && !!c.action);
+  const crewRows = (CREW[scene.day] || [])
+    .filter((c) => {
+      if (stageFilter == null) return true;
+      if (stageFilter === 'casting') return !!c.mystery;
+      if (stageFilter === 'needs') return needsAction(c);
+      return !c.mystery && stageOf(c, scene.day) === stageFilter;
+    })
+    // action items float to the top of the list
+    .sort((a, b) => Number(needsAction(b)) - Number(needsAction(a)));
 
   return (
     <div className="cp-root cp-root--c" ref={rootRef}>
