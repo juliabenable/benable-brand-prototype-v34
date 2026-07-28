@@ -4,7 +4,7 @@
 export const STAGE_LABELS = ['Invited', 'Confirmed', 'Product', 'Filming', 'Submitted', 'Live'];
 
 /* campaign completion per demo day */
-export const PCT = { 1: '4%', 3: '12%', 9: '34%', 11: '42%', 16: '58%', 22: '80%', 30: '100%' };
+export const PCT = { 1: '4%', 3: '12%', 4: '16%', 9: '34%', 11: '42%', 16: '58%', 22: '80%', 30: '100%' };
 const B = import.meta.env.BASE_URL;
 export const PHOTOS = {
   Maya: `${B}creators/maya.jpg`,
@@ -32,6 +32,14 @@ export const CREW = {
     { name: 'Jade', handle: '@jadebythesea', stage: 0, status: { type: 'static', phrases: ['Ready for your review ✨'] } },
     { name: 'Priya', handle: '@priyacreates', stage: 0, status: { type: 'static', phrases: ['Ready for your review ✨'] } },
     { name: 'Lena', handle: '@lena.lately', stage: 0, status: { type: 'static', phrases: ['Ready for your review ✨'] } },
+  ],
+  4: [
+    { name: 'Maya', handle: '@maya.skin', stage: 0, status: { type: 'facts', phrases: ['Invite sent this morning'] } },
+    { name: 'Nia', handle: '@niaglow', stage: 0, status: { type: 'facts', phrases: ['Viewed your invite'] } },
+    { name: 'Sofia', handle: '@sofia.films', stage: 0, status: { type: 'facts', phrases: ['Invite sent this morning'] } },
+    { name: 'Jade', handle: '@jadebythesea', stage: 0, status: { type: 'facts', phrases: ['Viewed your invite'] } },
+    { name: 'Priya', handle: '@priyacreates', stage: 0, status: { type: 'facts', phrases: ['Invite sent this morning'] } },
+    { name: 'Lena', handle: '@lena.lately', stage: 0, status: { type: 'facts', phrases: ['Invite sent this morning'] } },
   ],
   9: [
     { name: 'Maya', handle: '@maya.skin', stage: 2, status: { type: 'facts', phrases: ['📦 Cleared the Memphis hub'] } },
@@ -181,6 +189,24 @@ export const DAYS = [
     },
   },
   {
+    day: 4,
+    scrubLabel: 'Day 4 · Invites out',
+    race: { you: 16, them: 6, caption: 'Invites out on day 4 — <strong>most brands are still shortlisting.</strong>' },
+    upNext: [
+      { emoji: '💌', text: 'First acceptances land', eta: 'usually within 48h' },
+      { emoji: '📦', text: 'Product picks + shipping', eta: 'right after each yes' },
+    ],
+    recap: {
+      since: 'since yesterday',
+      items: [
+        { emoji: '✉️', bold: '6 invites sent', rest: ' — the moment you approved your picks' },
+        { emoji: '🧴', bold: 'Products reserved for each creator', rest: ' — orders ship the moment they accept' },
+        { emoji: '👀', bold: '2 have already viewed their invite', rest: ' — a good early sign' },
+      ],
+      closer: { clear: true, text: 'Nothing needs you — acceptances usually land within 48h' },
+    },
+  },
+  {
     day: 9,
     scrubLabel: 'Day 9 · Cooking',
     race: { you: 34, them: 12, caption: 'Day 9 — a typical agency would <strong>still be negotiating contracts</strong>. Your products are already in the mail.' },
@@ -193,7 +219,7 @@ export const DAYS = [
       since: 'since Friday',
       items: [
         { emoji: '✉️', bold: '6 invites sent', rest: ' — the moment you approved your picks' },
-        { emoji: '👀', bold: '4 of 6 viewed their invite', rest: ' — acceptances usually land within a day' },
+        { emoji: '✅', bold: '4 of 6 accepted their invite', rest: '' },
         { emoji: '👋', bold: '2 reminders to accept sent', rest: ' — nothing needed your input' },
         { emoji: '🔁', bold: '1 creator declined', rest: ' — we’re already sourcing replacements' },
       ],
