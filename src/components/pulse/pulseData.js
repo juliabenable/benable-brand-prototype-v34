@@ -35,9 +35,9 @@ export const CREW = {
   ],
   4: [
     { name: 'Maya', handle: '@maya.skin', stage: 0, status: { type: 'facts', phrases: ['Invite sent this morning'] } },
-    { name: 'Nia', handle: '@niaglow', stage: 0, status: { type: 'facts', phrases: ['Viewed your invite'] } },
+    { name: 'Nia', handle: '@niaglow', stage: 0, status: { type: 'facts', phrases: ['Invite sent this morning'] } },
     { name: 'Sofia', handle: '@sofia.films', stage: 0, status: { type: 'facts', phrases: ['Invite sent this morning'] } },
-    { name: 'Jade', handle: '@jadebythesea', stage: 0, status: { type: 'facts', phrases: ['Viewed your invite'] } },
+    { name: 'Jade', handle: '@jadebythesea', stage: 0, status: { type: 'facts', phrases: ['Invite sent this morning'] } },
     { name: 'Priya', handle: '@priyacreates', stage: 0, status: { type: 'facts', phrases: ['Invite sent this morning'] } },
     { name: 'Lena', handle: '@lena.lately', stage: 0, status: { type: 'facts', phrases: ['Invite sent this morning'] } },
   ],
@@ -201,7 +201,6 @@ export const DAYS = [
       items: [
         { emoji: '✉️', bold: '6 invites sent', rest: ' — the moment you approved your picks' },
         { emoji: '🧴', bold: 'Products reserved for each creator', rest: ' — orders ship the moment they accept' },
-        { emoji: '👀', bold: '2 have already viewed their invite', rest: ' — a good early sign' },
       ],
       closer: { clear: true, text: 'Nothing needs you — acceptances usually land within 48h' },
     },
