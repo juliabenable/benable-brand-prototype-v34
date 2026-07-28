@@ -47,7 +47,7 @@ export const CREW = {
     { name: 'Sofia', handle: '@sofia.films', stage: 1, status: { type: 'static', phrases: ['✅ Confirmed — shipping next'] } },
     { name: 'Jade', handle: '@jadebythesea', stage: 2, status: { type: 'facts', phrases: ['📬 Delivered yesterday'] } },
     { name: 'Priya', handle: '@priyacreates', stage: 1, status: { type: 'facts', phrases: ['💭 Sketching content ideas'] } },
-    { mystery: true, name: 'Casting…', stage: 0, status: { type: 'shimmer', phrases: ['Casting her replacement…', 'Vetting 3 stand-ins…', 'Checking availability…'] } },
+    { mystery: true, name: 'Casting…', stage: 0, status: { type: 'shimmer', phrases: ['Sourcing her replacement…', 'Vetting stand-ins…', 'Checking availability…'] } },
   ],
   11: [
     { name: 'Maya', handle: '@maya.skin', stage: 3, status: { type: 'facts', phrases: ['📬 Delivered — unboxing soon'] } },
