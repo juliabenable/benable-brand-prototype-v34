@@ -88,10 +88,10 @@ export function AmineStat({ scene }) {
    above it is what has already happened. Empty stages keep a forward-looking
    line (no-zeros rule). Voice: "Katie's team", never "Benable Team". */
 const AM2_RAIL = [
-  { fill: '#b9dfcb', ink: '#06301f', hint: (n) => (n ? 'Creators are reviewing your invites' : 'Once you approve your shortlist') },
-  { fill: '#8fceae', ink: '#06301f', hint: (n) => (n ? (n === 1 ? '1 placing an order now' : `${n} placing orders now`) : 'Waiting on replies') },
-  { fill: '#5fb98c', ink: '#06301f', hint: (n) => (n ? `${n} ${n === 1 ? 'package' : 'packages'} on the way` : 'As creators pick their products') },
-  { fill: '#30aa70', ink: '#06301f', hint: (n) => (n ? `${n} creating content` : 'When packages arrive') },
+  { fill: '#b9dfcb', ink: '#06301f', hint: (n) => (n ? 'Creators are reviewing your invites' : 'Once you approve') },
+  { fill: '#8fceae', ink: '#06301f', hint: (n) => (n ? (n === 1 ? '1 placing an order' : `${n} placing orders`) : 'Waiting on replies') },
+  { fill: '#5fb98c', ink: '#06301f', hint: (n) => (n ? `${n} ${n === 1 ? 'package' : 'packages'} in transit` : 'As creators pick their products') },
+  { fill: '#30aa70', ink: '#06301f', hint: (n) => (n ? `${n} creating content` : 'As packages arrive') },
   { fill: '#17864f', ink: '#ffffff', hint: (n) => (n ? 'Katie’s team is verifying quality' : 'Once creators finish filming') },
   { fill: '#1a6f4c', ink: '#ffffff', hint: (n) => (n ? `${n} ${n === 1 ? 'post' : 'posts'} now live!` : 'Once quality checks pass') },
   { fill: '#124a33', ink: '#ffffff', hint: (n) => (n ? 'All done!' : 'After posts go live') },

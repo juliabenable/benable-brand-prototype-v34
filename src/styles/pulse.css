@@ -111,7 +111,7 @@
 .am2-badge { pointer-events: auto; cursor: pointer; right: 3px; border: 1.5px solid #fff; font-family: inherit; }
 .am2-leg { display: flex; height: 49px; flex-direction: column; align-items: flex-start; overflow: hidden; padding: 0 7px 0 8px; }
 .am2-label { margin: 0; font-size: 12.5px; font-weight: 600; line-height: 16.25px; letter-spacing: -0.0366px; color: #1a1a1a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
-.am2-hint { margin: 0; font-size: 11.5px; line-height: 16.1px; letter-spacing: 0.0337px; color: #9a9a9a; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.am2-hint { margin: 0; text-wrap: pretty; font-size: 11.5px; line-height: 16.1px; letter-spacing: 0.0337px; color: #9a9a9a; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
 /* pre-campaign states — Figma 7199:20453 (Stay Tuned) / 7199:21448 (Found) */
 .am-state { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; min-height: 520px; padding: 40px 20px; animation: cp-in 0.45s cubic-bezier(0.22,1,0.36,1) both; }
@@ -183,7 +183,7 @@
 .am-note { display: flex; align-items: flex-start; gap: 12px; padding: 16px 0; border-bottom: 1px solid #e3e3e3; }
 .am-note--last { border-bottom: none; }
 .am-note-emoji { flex: none; font-size: 16px; line-height: 20px; }
-.am-note-text { margin: 0; font-size: 14px; line-height: 20px; color: #717171; }
+.am-note-text { margin: 0; text-wrap: pretty; font-size: 14px; line-height: 20px; color: #717171; }
 .am-note-text strong { font-weight: 600; color: #1c1c1c; }
 .am-note-text span { font-weight: 500; color: #717171; }
 .am-pace-body { padding: 13px 20px 20px; }
